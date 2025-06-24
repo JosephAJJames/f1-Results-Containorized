@@ -3,9 +3,11 @@ const circuit_to_round_map = require("./circuit_image.js");
 const express = require("express");
 
 const app = express();
+app.use(express.static('public'))
 app.set('view engine', 'ejs');
+app.use(express.static('public'))
 app.set('views', './views');
-
+app.set(express.static('public'))
 
 const get_race_name = (res) => {
     const year = res.data.MRData.RaceTable.season;
@@ -16,6 +18,10 @@ const get_race_name = (res) => {
 };
 
 
+const race_results_array = (res) => {
+    return res.data.MRData.RaceTable.Races[0].Results
+}
+
 const get_circuit_map = (round_num) => {
     return circuit_to_round_map[round_num];
 };
@@ -25,7 +31,8 @@ app.get("/", (req, page_res) => {
         console.log("got a response:", res);
     }).then((res) => {
         const {title, round_num} = get_race_name(res);
-        page_res.render("results", {url: get_circuit_map(round_num), gp_title: title});
+        const race_results = race_results_array(res);
+        page_res.render("results", {url: get_circuit_map(round_num), gp_title: title, results: race_results});
     }).catch((err) => {
         console.log(err);
     });

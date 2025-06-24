@@ -1,0 +1,30 @@
+.track_and_title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.track_and_title > * {
+    margin: 0.5%;
+}
+
+.track_and_title > img {
+    max-width: 20%;
+    max-height: 20%;
+}
+
+.cont {
+    max-width: 50%;
+    margin: auto;
+}
+
+.table_cont {
+    max-width: 50%;
+    margin: auto;
+}
+
+.table_cont > table {
+    margin: 0 auto;
+    text-align: center;
+}
