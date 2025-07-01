@@ -1,6 +1,6 @@
 const http = require("axios");
-const circuit_to_round_map = require("./circuit_image.js");
 const express = require("express");
+const helpers = require("./ejs-helpers.js")
 
 const app = express();
 app.use(express.static('public'))
@@ -19,8 +19,8 @@ const get_race_name = (res) => {
 
 
 const race_results_array = (res) => {
-    return res.data.MRData.RaceTable.Races[0].Results
-}
+    return res.data.MRData.RaceTable.Races[0].Results;
+};
 
 const get_circuit_map = (round_num) => {
     return circuit_to_round_map[round_num];
@@ -32,7 +32,8 @@ app.get("/", (req, page_res) => {
     }).then((res) => {
         const {title, round_num} = get_race_name(res);
         const race_results = race_results_array(res);
-        page_res.render("results", {url: get_circuit_map(round_num), gp_title: title, results: race_results});
+
+        page_res.render("results", {round_num, gp_title: title, results: race_results, helpers});
     }).catch((err) => {
         console.log(err);
     });

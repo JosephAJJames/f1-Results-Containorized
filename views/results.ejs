@@ -9,7 +9,7 @@
 <body>
     <div class = "cont">
       <div class="track_and_title">
-        <img src="<%= url %>" alt="Track map">
+        <img src="<%= helpers.get_circuit_map_url(round_num) %>" alt="Track map">
         <h4><%= gp_title %></h4>
       </div>
         
@@ -17,13 +17,18 @@
           <table>
             <tr>
               <th>Name</th>
+              <th>face</th>
               <th>Number</th>
               <th>Position</th>
             </tr>
             <% results.forEach((item) => { %>
+              <% const num = item.number %>
               <tr>
                 <td> <%= item.Driver.givenName + " " + item.Driver.familyName %> </td>
-                <td> <%= item.number %> </td>
+                <td>
+                  <div class="face_img_box"><img src="<%= helpers.get_driver_face_url(num) %>" alt="face"></div>
+                </td>
+                <td> <%= num %> </td>
                 <td> <%= item.position %> </td>
               </tr>
             <% }) %>

@@ -10,8 +10,8 @@
 }
 
 .track_and_title > img {
-    max-width: 20%;
-    max-height: 20%;
+    max-width: 35%;
+    max-height: 35%;
 }
 
 .cont {
@@ -27,4 +27,20 @@
 .table_cont > table {
     margin: 0 auto;
     text-align: center;
+}
+
+
+.face_img_box { 
+    width: 4rem;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+}
+
+.face_img_box > img {
+    position: absolute;
+    top: -5%;                
+    left: -10%;
+    width: 110%;              
+    height: auto;
 }
