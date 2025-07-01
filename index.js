@@ -5,9 +5,7 @@ const helpers = require("./ejs-helpers.js")
 const app = express();
 app.use(express.static('public'))
 app.set('view engine', 'ejs');
-app.use(express.static('public'))
 app.set('views', './views');
-app.set(express.static('public'))
 
 const get_race_name = (res) => {
     const year = res.data.MRData.RaceTable.season;
